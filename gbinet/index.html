@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Ⓜ️</text></svg>">
+    <title>GBi-Net</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+        <!--FACEBOOK-->
+    <meta property="og:image" content="https://jonbarron.info/mipnerf/img/rays_square.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="682">
+    <meta property="og:image:height" content="682">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mizhenxing.github.io/gbinet"/>
+    <meta property="og:title" content="mip-NeRF" />
+    <meta property="og:description" content="Project page for Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields." />
+
+        <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="mip-NeRF" />
+    <meta name="twitter:description" content="Project page for Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields." />
+    <meta name="twitter:image" content="https://jonbarron.info/mipnerf/img/rays_square.png" />
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <!-- <b>GBi-Net</b>: A Multiscale Representation <br> for Anti-Aliasing Neural Radiance Fields</br>  -->
+                Generalized Binary Search Network <br> for Highly-Efficient Multi-View Stereo </br>
+                <small>
+                    CVPR 2022
+                </small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://mizhenxing.github.io/">
+                          Zhenxing Mi
+                        </a>
+                        </br>HKUST
+                    </li>
+                    <li>
+                        <a href="https://boese0601.github.io/">
+                          Di Chang
+                        </a>
+                        </br>HKUST
+                    </li>
+                    <li>
+                        <a href="https://www.danxurgb.net/">
+                          Dan Xu
+                        </a>
+                        </br>HKUST
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://arxiv.org/abs/2112.02338">
+                            <image src="img/arxiv-logo.png" height="60px">
+                                <h4><strong>Arxiv</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                            <image src="img/youtube_icon.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/MiZhenxing/GBi-Net">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <image src="img/gbinet_pipeline.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify">
+                    Multi-view Stereo (MVS) with known camera parameters is essentially a 1D search
+                    problem within a valid depth range. Recent deep learning-based MVS methods
+                    typically densely sample depth hypotheses in the depth range, and then construct
+                    prohibitively memory-consuming 3D cost volumes for depth prediction. 
+                    Although coarse-to-fine sampling strategies alleviate this overhead issue 
+                    to a certain extent, the efficiency of MVS is still an open challenge. 
+                    In this work, we propose a novel method for highly efficient MVS that remarkably 
+                    decreases the memory footprint, meanwhile clearly advancing state-of-the-art depth 
+                    prediction performance. We investigate what a search strategy can be reasonably 
+                    optimal for MVS taking into account of both efficiency and effectiveness. 
+                    We first formulate MVS as a binary search problem, and accordingly propose a 
+                    generalized binary search network for MVS. Specifically, in each step, the depth 
+                    range is split into 2 bins with extra 1 error tolerance bin on both sides. 
+                    A classification is performed to identify which bin contains the true depth. 
+                    We also design three mechanisms to respectively handle classification errors, 
+                    deal with out-of-range samples and decrease the training memory. 
+                    The new formulation makes our method only sample a very small number 
+                    of depth hypotheses in each step, which is highly memory efficient, 
+                    and also greatly facilitates quick training convergence. 
+                    Experiments on competitive benchmarks show that our method achieves 
+                    state-of-the-art accuracy with much less memory. Particularly, 
+                    our method obtains an overall score of 0.289 on DTU dataset and 
+                    tops the first place on challenging Tanks and Temples advanced dataset 
+                    among all the learning-based methods. Our code will be released 
+                    at <a href="https://github.com/MiZhenxing/GBi-Net">GBi-Net</a>.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Video
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://www.youtube.com/embed/EpH175PY1A0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Search Strategy
+                </h3>
+                <image src="img/memorydifferentsearchs6.png" class="img-responsive" alt="overview"><br>
+                <!-- <p class="text-justify">
+                    Typical positional encoding (as used in Transformer networks and Neural Radiance Fields) maps a single point in space to a feature vector, where each element is generated by a sinusoid with an exponentially increasing frequency:
+                </p> -->
+            </div>
+        </div>
+            
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Generalized Binary Search
+                </h3>
+                <image src="img/gbsearch.png" class="img-responsive" alt="overview"><br>
+                <!-- <p class="text-justify">
+                    We use integrated positional encoding to train NeRF to generate anti-aliased renderings. Rather than casting an infinitesimal ray through each pixel, we instead cast a full 3D <em>cone</em>. For each queried point along a ray, we consider its associated 3D conical frustum. Two different cameras viewing the same point in space may result in vastly different conical frustums, as illustrated here in 2D:
+                </p> -->
+                <image src="img/supp_depthmap10.png" class="img-responsive" alt="overview"><br>
+
+            </div>
+        </div>
+            
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Results on DTU
+                </h3>
+                <image src="img/dtu_points_compare.png" class="img-responsive" alt="overview"><br>
+                <!-- <p class="text-justify">
+                    We train NeRF and mip-NeRF on a dataset with images at four different resolutions. Normal NeRF (left) is not capable of learning to represent the same scene at multiple levels of detail, with blurring in close-up shots and aliasing in low resolution views, while mip-NeRF (right) both preserves sharp details in close-ups and correctly renders the zoomed-out images.
+                </p> -->
+                <image src="img/supp_dtu_pt2.png" class="img-responsive" alt="overview"><br>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Results on Tanksandtemples
+                </h3>
+                <image src="img/supp_tanks_pt1.png" class="img-responsive" alt="overview"><br>
+                <!-- <p class="text-justify">
+                    We train NeRF and mip-NeRF on a dataset with images at four different resolutions. Normal NeRF (left) is not capable of learning to represent the same scene at multiple levels of detail, with blurring in close-up shots and aliasing in low resolution views, while mip-NeRF (right) both preserves sharp details in close-ups and correctly renders the zoomed-out images.
+                </p> -->
+            </div>
+        </div>
+      
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@inproceedings{mi2021generalized,
+    title={Generalized Binary Search Network for Highly-Efficient Multi-View Stereo}, 
+    author={Zhenxing Mi and Di Chang and Dan Xu},
+    booktitle={CVPR},
+    year={2022}
+}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                    This research is supported in part by the Early Career
+                    Scheme of the Research Grants Council (RGC) of the Hong
+                    Kong SAR under grant No. 26202321 and HKUST Startup
+                    Fund No. R9253.
+                    <br>
+                The website template was borrowed from <a href="https://jonbarron.info/">Jon Barron</a> <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

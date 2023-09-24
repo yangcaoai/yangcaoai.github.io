@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Ⓜ️</text></svg>">
+    <title>Switch-NeRF</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+        <!--FACEBOOK-->
+    <meta property="og:image" content="https://jonbarron.info/mipnerf/img/rays_square.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="682">
+    <meta property="og:image:height" content="682">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mizhenxing.github.io/gbinet"/>
+    <meta property="og:title" content="mip-NeRF" />
+    <meta property="og:description" content="Project page for Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields." />
+
+        <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="mip-NeRF" />
+    <meta name="twitter:description" content="Project page for Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields." />
+    <meta name="twitter:image" content="https://jonbarron.info/mipnerf/img/rays_square.png" />
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <!-- <b>GBi-Net</b>: A Multiscale Representation <br> for Anti-Aliasing Neural Radiance Fields</br>  -->
+                
+                Switch-NeRF: Learning Scene Decomposition with Mixture of Experts </br> for Large-scale Neural Radiance Fields</br>
+                <small>
+                    ICLR 2023
+                </small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://mizhenxing.github.io/">
+                          Zhenxing Mi
+                        </a>
+                        </br>HKUST
+                    </li>
+                    <li>
+                        <a href="https://www.danxurgb.net/">
+                          Dan Xu
+                        </a>
+                        </br>HKUST
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://openreview.net/forum?id=PQ2zoIZqvm">
+                            <image src="img/openreview_logo_512.png" height="60px">
+                                <h4><strong>Openreview</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                            <image src="img/youtube_icon.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/MiZhenxing/Switch-NeRF">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Framework
+                </h3>
+                <image src="img/switch_nerf_framework.png" class="img-responsive" alt="overview"><br>
+                    The framework our Switch-NeRF. A 3D point <b>x</b> will first go through a gating 
+                    network and then be dispatched to only one expert according to the gating network output. 
+                    The expert output is multiplied by the corresponding gate value and sent to a head 
+                    for density σ and color <b>c</b> prediction with direction <b>d</b> and appearance embedding. 
+                    The rendering loss is used for supervision. The images on the left of each expert are 
+                    the visualization of 3D radiance fields handled by different experts.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Videos
+                </h3>
+                <video id="v11" width="100%" autoplay loop muted controls>
+                    <source src="https://raw.githubusercontent.com/MiZhenxing/Switch-NeRF-demo/master/sci-art_image_depth_video_fps_24.mp4" type="video/mp4" />
+                </video>
+                <video id="v11" width="100%" autoplay loop muted controls>
+                    <source src="https://raw.githubusercontent.com/MiZhenxing/Switch-NeRF-demo/master/building_image_depth_video_fps_24.mp4" type="video/mp4" />
+                </video>
+                <video id="v11" width="100%" autoplay loop muted controls>
+                    <source src="https://raw.githubusercontent.com/MiZhenxing/Switch-NeRF-demo/master/residence_image_depth_video_fps_24.mp4" type="video/mp4" />
+                </video>
+                <video id="v11" width="100%" autoplay loop muted controls>
+                    <source src="https://raw.githubusercontent.com/MiZhenxing/Switch-NeRF-demo/master/rubble_image_depth_video_fps_24.mp4" type="video/mp4" />
+                </video>
+                <!-- <p class="text-justify">
+                    Typical positional encoding (as used in Transformer networks and Neural Radiance Fields) maps a single point in space to a feature vector, where each element is generated by a sinusoid with an exponentially increasing frequency:
+                </p> -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <!-- <image src="img/gbinet_pipeline.png" class="img-responsive" alt="overview"><br> -->
+                <p class="text-justify"> The Neural Radiance Fields (NeRF) have been recently applied to reconstruct 
+                    building-scale and even city-scale scenes. To model a large-scale scene efficiently, 
+                    a dominant strategy is to employ a divide-and-conquer paradigm via performing scene 
+                    decomposition, which decomposes a complex scene into parts that are further 
+                    processed by different sub-networks. Existing large-scale NeRFs mainly use heuristic 
+                    hand-crafted scene decomposition, with regular 3D-distance-based or 
+                    physical-street-block-based schemes. Although achieving promising results, 
+                    the hand-crafted schemes limit the capabilities of NeRF in large-scale 
+                    scene modeling in several aspects. Manually designing a universal scene 
+                    decomposition rule for different complex scenes is challenging, 
+                    leading to adaptation issues for different scenarios. The decomposition 
+                    procedure is not learnable, hindering the network from jointly optimizing 
+                    the scene decomposition and the radiance fields in an end-to-end manner. 
+                    The different sub-networks are typically optimized independently, 
+                    and thus hand-crafted rules are required to composite them to achieve 
+                    a better consistency.  To tackle these issues, we propose Switch-NeRF, 
+                    a novel end-to-end large-scale NeRF with learning-based scene decomposition. 
+                    We design a gating network to dispatch 3D points to different NeRF 
+                    sub-networks. The gating network can be optimized together with the 
+                    NeRF sub-networks for different scene partitions, by a design with 
+                    the Sparsely Gated Mixture of Experts (MoE). The outputs from 
+                    different sub-networks can also be fused in a learnable way in the 
+                    unified framework to effectively guarantee the consistency of 
+                    the whole scene. Furthermore, the proposed MoE-based Switch-NeRF 
+                    model is carefully implemented and optimized to achieve both 
+                    high-fidelity scene reconstruction and efficient computation. 
+                    Our method establishes clear state-of-the-art performances on 
+                    several large-scale datasets. To the best of our knowledge, 
+                    we are the first to propose an applicable end-to-end sparse NeRF 
+                    network with learning-based decomposition for large-scale scenes. 
+                    Codes are released at 
+                    <a href="https://github.com/MiZhenxing/Switch-NeRF">Switch-NeRF</a>.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Rendering quality
+                </h3>
+                <image src="img/image_compare2.png" class="img-responsive" alt="overview"><br>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Expert specialization
+                </h3>
+                <image src="img/point_comapre4.png" class="img-responsive" alt="overview"><br>
+
+            </div>
+        </div>
+      
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@inproceedings{mi2023switchnerf,
+    title={Switch-NeRF: Learning Scene Decomposition with Mixture of Experts for Large-scale Neural Radiance Fields},
+    author={Zhenxing Mi and Dan Xu},
+    booktitle={International Conference on Learning Representations (ICLR)},
+    year={2023},
+    url={https://openreview.net/forum?id=PQ2zoIZqvm}
+}
+                    </textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                    Our code follows several awesome repositories such as 
+                    <a href="https://github.com/cmusatyalab/mega-nerf">Mega-NeRF</a>,
+                    <a href="https://github.com/microsoft/tutel/tree/56dbd664341cf6485c9fa292955f77d3ac918a65">Tutel</a>,
+                    <a href="https://github.com/sjtuytc/UnboundedNeRFPytorch">UnboundedNeRFPytorch</a>,
+                    <a href="https://github.com/openxrlab/xrnerf">xrnerf</a>.
+                    We appreciate them for making their codes available to public.
+                    <br>
+                    This research is supported in part by HKUST-SAIL joint research funding, 
+                    the Early Career Scheme of the Research Grants Council (RGC) of 
+                    the Hong Kong SAR under grant No. 26202321 and HKUST Startup Fund No. R9253.
+                    <br>
+                    We appreciate <a href="https://eveneveno.github.io/lnxu">Linning Xu</a> for sharing her experience in making demo videos.
+                    <br>
+                    The website template was borrowed from <a href="https://jonbarron.info/">Jon Barron</a> <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

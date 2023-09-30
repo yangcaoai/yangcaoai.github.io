@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#67;️</text></svg>">
+    <title>CoDA</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+        <!--FACEBOOK-->
+    <meta property="og:image" content="https://jonbarron.info/mipnerf/img/rays_square.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="682">
+    <meta property="og:image:height" content="682">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://harlanhong.github.io/publications/CoDA.html"/>
+    <meta property="og:title" content="CoDA" />
+    <meta property="og:description" content="Project page for CoDA: Collaborative Novel Box Discovery and Cross-modal Alignment for Open-vocabulary 3D Object Detection." />
+
+        <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CoDA" />
+    <meta name="twitter:description" content="Project page for CoDA: Collaborative Novel Box Discovery and Cross-modal Alignment for Open-vocabulary 3D Object Detection." />
+    <!-- <meta name="twitter:image" content="https://jonbarron.info/mipnerf/img/rays_square.png" /> -->
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <!-- <b>GBi-Net</b>: A Multiscale Representation <br> for Anti-Aliasing Neural Radiance Fields</br>  -->
+
+                CoDA: Collaborative Novel Box Discovery and Cross-modal Alignment  for <br> Open-vocabulary 3D Object Detection</br>
+                <small>
+                    NeurIPS 2023
+                </small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://yangcao1996.github.io/">
+                          Yang Cao
+                        </a>
+                        </br>HKUST
+                    </li>
+                    <li>
+<!--                        <a href="https://yangcao1996.github.io/">-->
+                          Yihan Zeng
+<!--                        </a>-->
+                        </br>Huawei Noah's Ark Lab
+                    </li>
+                    <li>
+                        <a href="https://xuhangcn.github.io/">
+                          Hang Xu
+                        </a>
+                        </br>Huawei Noah's Ark Lab
+                    </li>
+                    <li>
+                        <a href="https://www.danxurgb.net/">
+                          Dan Xu
+                        </a>
+                        </br>HKUST
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="link">
+                            <a href="https://arxiv.org/abs/2307.09906" target="_blank" class="imageLink"><img
+                                src="https://www.filepicker.io/api/file/XQvDkgbsRiiPh8VSZ8wu" , width="50%"></a>
+                            <a href="https://arxiv.org/abs/2307.09906" target="_blank"><h4><strong>Paper</strong></h4></a>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://github.com/harlanhong/ICCV2023-MCNET" target="_blank" class="imageLink"><img
+                                src="../images/icon_github.png" , width="50%"></a>
+                            <a href="https://github.com/harlanhong/ICCV2023-MCNET" target="_blank"><h4><strong>Code</strong></h4></a>
+                            <!-- <a href="https://github.com/harlanhong/CVPR2022-DaGAN/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/harlanhong/CVPR2022-DaGAN"></a> -->
+
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Framework
+                </h3>
+                <image src="../images/ov3d_det.png" class="img-responsive" alt="overview"><br>
+                  Overview of the proposed <b>CoDA</b>. We consider 3DETR as our base 3D object detection framework, which is represented by the `Encoder' and `Decoder' networks.
+    The object queries together with encoded point cloud features are input into the decoder. The updated object query features from the decoder are further input into 3D object classification and localization heads. We first propose a 3D Novel Object Discovery (<b>3D-NOD</b>) strategy which utilizes both 3D geometry priors from predicted 3D boxes and 2D semantic priors from the CLIP model to discover novel objects during training. The discovered novel object boxes are maintained in a novel object box label pool, which is further utilized in our proposed discovery-driven cross-modal alignment (<b>DCMA</b>). The DCMA consists of a class-agnostic distillation and a class-specific contrastive alignment based on discovered novel boxes. Both 3D-NOD and DCMA collaboratively learn to benefit each other to achieve simultaneous novel object localization and classification in an end-to-end manner.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Samples
+                </h3>
+<!--                <image src="../images/CoDA_cmp_cropped.png" class="img-responsive" alt="overview"><br>-->
+                <image src="../images/CoDA_sup_fig0_cropped.png" class="img-responsive" alt="overview"><br>
+                <image src="../images/CoDA_sup_fig1_cropped.png" class="img-responsive" alt="overview"><br>
+<!--                <embed src="../images/CoDA_cmp_cropped.pdf" width="800px" height="2100px" />-->
+                <div class="section">
+                  <center>
+                  <p>Qualitative comparison with 3D-CLIP. Benefiting from our contributions, our method can discover more novel objects, which are indicated by blue boxes in the color images. Besides, our method can also
+    detect more base objects, which proves that our method has better open-world detection capabilities, with the proposed collaborative 3D-NOD and Cross-modal Alignment. Here only the objects with classification scores larger than 0.5 are displayed for better visualization.
+                  </p>
+                  </center>
+                </div>
+                <!-- <p class="text-justify">
+                    Typical positional encoding (as used in Transformer networks and Neural Radiance Fields) maps a single point in space to a feature vector, where each element is generated by a sinusoid with an exponentially increasing frequency:
+                </p> -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <!-- <image src="img/gbinet_pipeline.png" class="img-responsive" alt="overview"><br> -->
+                <p class="text-justify">
+                  Open-Vocabulary 3D Object Detection (OV-3DDet) aims to detect objects from an
+arbitrary list of categories within a 3D scene, which remains seldom explored in the literature.
+                  There are primarily two fundamental problems in OV-3DDet, <i>i.e.</i>,
+localizing and classifying novel objects.
+This paper aims at addressing the two problems simultaneously via a unified framework, under the condition of limited base categories.
+To localize novel 3D objects, we propose an effective 3D Novel Object Discovery strategy, which utilizes both the 3D box geometry priors and 2D semantic open-vocabulary priors to generate pseudo box labels of the novel objects.
+To classify novel object boxes, we further develop a cross-modal alignment module based on discovered novel boxes, to align feature spaces between 3D point cloud and image/text modalities.
+Specifically, the alignment process contains a class-agnostic and a class-discriminative alignment, incorporating not only the base objects with annotations but also the increasingly discovered novel objects, resulting in an iteratively enhanced alignment.
+The novel box discovery and cross-modal alignment are jointly learned to collaboratively benefit each other. The novel object discovery can directly impact the cross-modal alignment, while a better feature alignment can in turn boost the localization capability, leading to a unified OV-3DDet framework, named <b> CoDA </b>, , for simultaneous novel object localization and classification.
+Extensive experiments on two challenging datasets (<i>i.e.</i>, SUN-RGBD and ScanNet) demonstrate the effectiveness of our method and also show a significant mAP improvement upon the best-performing alternative method by 80%.
+All the codes and pre-trained models will be made publicly available.
+<!--                  Talking head video generation aims to animate a human face in a still image with dynamic poses and expressions using motion information derived from a target-driving video, while maintaining the person's identity in the source image. However, dramatic and complex motions in the driving video cause ambiguous generation, because the still source image cannot provide sufficient appearance information for occluded regions or delicate expression variations, which produces severe artifacts and significantly degrades the generation quality.-->
+<!--                  To tackle this problem, we propose to learn a global facial representation space, and design a novel implicit identity representation conditioned memory compensation network, coined as CoDA, for high-fidelity talking head generation.~Specifically, we devise a network module to learn a unified spatial facial meta-memory bank from all training samples, which can provide rich facial structure and appearance priors to compensate warped source facial features for the generation. Furthermore, we propose an effective query mechanism based on implicit identity representations learned from the discrete keypoints of the source image. It can greatly facilitate the retrieval of more correlated information from the memory bank for the compensation. Extensive experiments demonstrate that CoDA can learn representative and complementary facial memory, and can clearly outperform previous state-of-the-art talking head generation methods on VoxCeleb1 and CelebV datasets.-->
+                    <!-- <a href="https://github.com/harlanhong/CoDA">CoDA</a>. -->
+                </p>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Rendering quality
+                </h3>
+                <image src="img/image_compare2.png" class="img-responsive" alt="overview"><br>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Expert specialization
+                </h3>
+                <image src="img/point_comapre4.png" class="img-responsive" alt="overview"><br>
+
+            </div>
+        </div>
+
+             -->
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+              @inproceedings{mi2023switchnerf,
+                  title={CoDA: Learning Scene Decomposition with Mixture of Experts for Large-scale Neural Radiance Fields},
+                  author={Zhenxing Mi and Dan Xu},
+                  booktitle={International Conference on Learning Representations (ICLR)},
+                  year={2023},
+                  url={https://openreview.net/forum?id=PQ2zoIZqvm}
+              }
+                    </textarea>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                    Our code follows several awesome repositories such as
+                    <a href="https://github.com/openai/CLIP">CLIP</a>,
+                    <a href="https://github.com/facebookresearch/3detr">3DETR</a>.
+                    We appreciate them for making their codes available to public.
+<!--                    <br>-->
+<!--                    This research is supported in part by HKUST-SAIL joint research funding,-->
+<!--                    the Early Career Scheme of the Research Grants Council (RGC) of-->
+<!--                    the Hong Kong SAR under grant No. 26202321 and HKUST Startup Fund No. R9253.-->
+<!--                    <br>-->
+<!--                    The website template was borrowed from <a href="https://jonbarron.info/">Jon Barron</a> <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a>.-->
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -123,7 +123,7 @@
                     Framework
                 </h3>
                 <image src="../images/ov3d_det.png" class="img-responsive" alt="overview"><br>
-                  Overview of the proposed <b>CoDA</b>. We consider 3DETR as our base 3D object detection framework, which is represented by the `Encoder' and `Decoder' networks.
+                  Figure 1: Overview of the proposed <b>CoDA</b>. We consider 3DETR as our base 3D object detection framework, which is represented by the `Encoder' and `Decoder' networks.
     The object queries together with encoded point cloud features are input into the decoder. The updated object query features from the decoder are further input into 3D object classification and localization heads. We first propose a 3D Novel Object Discovery (<b>3D-NOD</b>) strategy which utilizes both 3D geometry priors from predicted 3D boxes and 2D semantic priors from the CLIP model to discover novel objects during training. The discovered novel object boxes are maintained in a novel object box label pool, which is further utilized in our proposed discovery-driven cross-modal alignment (<b>DCMA</b>). The DCMA consists of a class-agnostic distillation and a class-specific contrastive alignment based on discovered novel boxes. Both 3D-NOD and DCMA collaboratively learn to benefit each other to achieve simultaneous novel object localization and classification in an end-to-end manner.
             </div>
         </div>
@@ -139,7 +139,7 @@
 <!--                <embed src="../images/CoDA_cmp_cropped.pdf" width="800px" height="2100px" />-->
                 <div class="section">
                   <center>
-                  <p>Qualitative comparison with 3D-CLIP. Benefiting from our contributions, our method can discover more novel objects, which are indicated by blue boxes in the color images. Besides, our method can also
+                  <p>Figure 2: Qualitative comparison with 3D-CLIP. Benefiting from our contributions, our method can discover more novel objects, which are indicated by blue boxes in the color images. Besides, our method can also
     detect more base objects, which proves that our method has better open-world detection capabilities, with the proposed collaborative 3D-NOD and Cross-modal Alignment. Here only the objects with classification scores larger than 0.5 are displayed for better visualization.
                   </p>
                   </center>

@@ -56,7 +56,7 @@
             <h2 class="col-md-12 text-center">
                 <!-- <b>GBi-Net</b>: A Multiscale Representation <br> for Anti-Aliasing Neural Radiance Fields</br>  -->
 
-                CoDA: Collaborative Novel Box Discovery and Cross-modal Alignment  for <br> Open-vocabulary 3D Object Detection</br>
+                CoDA: Collaborative Novel Box Discovery and Cross-modal Alignment for <br> Open-vocabulary 3D Object Detection</br>
                 <small>
                     NeurIPS 2023
                 </small>
@@ -134,8 +134,8 @@
                     Samples
                 </h3>
 <!--                <image src="../images/CoDA_cmp_cropped.png" class="img-responsive" alt="overview"><br>-->
-                <image src="../images/CoDA_sup_fig0_cropped.png" class="img-responsive" alt="overview"><br>
-                <image src="../images/CoDA_sup_fig1_cropped.png" class="img-responsive" alt="overview"><br>
+                <image src="../images/CoDA_sup_fig0_v2_cropped.png" class="img-responsive" alt="overview"><br>
+                <image src="../images/CoDA_sup_fig1_v2_cropped.png" class="img-responsive" alt="overview"><br>
 <!--                <embed src="../images/CoDA_cmp_cropped.pdf" width="800px" height="2100px" />-->
                 <div class="section">
                   <center>
@@ -165,7 +165,7 @@ This paper aims at addressing the two problems simultaneously via a unified fram
 To localize novel 3D objects, we propose an effective 3D Novel Object Discovery strategy, which utilizes both the 3D box geometry priors and 2D semantic open-vocabulary priors to generate pseudo box labels of the novel objects.
 To classify novel object boxes, we further develop a cross-modal alignment module based on discovered novel boxes, to align feature spaces between 3D point cloud and image/text modalities.
 Specifically, the alignment process contains a class-agnostic and a class-discriminative alignment, incorporating not only the base objects with annotations but also the increasingly discovered novel objects, resulting in an iteratively enhanced alignment.
-The novel box discovery and cross-modal alignment are jointly learned to collaboratively benefit each other. The novel object discovery can directly impact the cross-modal alignment, while a better feature alignment can in turn boost the localization capability, leading to a unified OV-3DDet framework, named <b> CoDA </b>, , for simultaneous novel object localization and classification.
+The novel box discovery and cross-modal alignment are jointly learned to collaboratively benefit each other. The novel object discovery can directly impact the cross-modal alignment, while a better feature alignment can in turn boost the localization capability, leading to a unified OV-3DDet framework, named <b> CoDA </b>, for simultaneous novel object localization and classification.
 Extensive experiments on two challenging datasets (<i>i.e.</i>, SUN-RGBD and ScanNet) demonstrate the effectiveness of our method and also show a significant mAP improvement upon the best-performing alternative method by 80%.
 <!--                  Talking head video generation aims to animate a human face in a still image with dynamic poses and expressions using motion information derived from a target-driving video, while maintaining the person's identity in the source image. However, dramatic and complex motions in the driving video cause ambiguous generation, because the still source image cannot provide sufficient appearance information for occluded regions or delicate expression variations, which produces severe artifacts and significantly degrades the generation quality.-->
 <!--                  To tackle this problem, we propose to learn a global facial representation space, and design a novel implicit identity representation conditioned memory compensation network, coined as CoDA, for high-fidelity talking head generation.~Specifically, we devise a network module to learn a unified spatial facial meta-memory bank from all training samples, which can provide rich facial structure and appearance priors to compensate warped source facial features for the generation. Furthermore, we propose an effective query mechanism based on implicit identity representations learned from the discrete keypoints of the source image. It can greatly facilitate the retrieval of more correlated information from the memory bank for the compensation. Extensive experiments demonstrate that CoDA can learn representative and complementary facial memory, and can clearly outperform previous state-of-the-art talking head generation methods on VoxCeleb1 and CelebV datasets.-->
